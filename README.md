@@ -41,7 +41,7 @@ CREATE TABLE videos (
     title TEXT
 );
 ```
-4. Dapatkan connection string dari Settings > Database
+4. Dapatkan connection string dari Connect (berada di sebelah nama project) -> Session Pooler -> View parameters.
 
 ### 4. Konfigurasi Environment Variables
 
