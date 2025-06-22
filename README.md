@@ -3,7 +3,6 @@
 ### 1. Clone Repository
 ```bash
 git clone https://github.com/Raphonkzy/FileHub-API.git
-cd FileHubApp
 ```
 
 ### 2. Install Dependencies
