@@ -2,7 +2,7 @@
 
 ### 1. Clone Repository
 ```bash
-git clone <repository-url>
+git clone https://github.com/Raphonkzy/FileHub-API.git
 cd FileHubApp
 ```
 
