@@ -43,11 +43,10 @@ class VideoController {
         error: 'Internal server error'
       });
     }
-  }
-  // Create new video
+  }  // Create new video
   static async createVideo(req, res) {
     try {
-      const { video_url, title } = req.body;
+      const { video_url } = req.body;
 
       if (!video_url) {
         return res.status(400).json({
@@ -57,8 +56,8 @@ class VideoController {
       }
 
       const result = await pool.query(
-        'INSERT INTO videos (video_url, title) VALUES ($1, $2) RETURNING *',
-        [video_url, title || null]
+        'INSERT INTO videos (video_url) VALUES ($1) RETURNING *',
+        [video_url]
       );
 
       res.status(201).json({

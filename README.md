@@ -168,11 +168,11 @@ Base URL: `http://localhost:3000/api`
 ### 3. Membuat Video Baru
 - **URL:** `POST /api/videos`
 - **Content-Type:** `application/json`
+- **Deskripsi:** Membuat video baru hanya dengan video_url (title akan diset ke null)
 - **Body:**
 ```json
 {
-  "video_url": "https://example.com/video.mp4",
-  "title": "Judul Video Saya"
+  "video_url": "https://example.com/video.mp4"
 }
 ```
 - **Response:**
@@ -182,7 +182,7 @@ Base URL: `http://localhost:3000/api`
   "data": {
     "id": 2,
     "video_url": "https://example.com/video.mp4",
-    "title": "Judul Video Saya"
+    "title": null
   },
   "message": "Video created successfully"
 }
@@ -192,6 +192,7 @@ Base URL: `http://localhost:3000/api`
 - **URL:** `PUT /api/videos/:id`
 - **Parameter:** `id` (integer) - ID video yang ingin diupdate
 - **Content-Type:** `application/json`
+- **Deskripsi:** Update video_url dan title (gunakan endpoint ini untuk menambahkan/mengubah title)
 - **Body:**
 ```json
 {
@@ -291,11 +292,11 @@ Semua error response menggunakan format standar:
 
 ### Menggunakan curl
 
-#### 1. Membuat video baru:
+#### 1. Membuat video baru (hanya video_url):
 ```bash
 curl -X POST http://localhost:3000/api/videos \
   -H "Content-Type: application/json" \
-  -d '{"video_url": "https://example.com/test-video.mp4", "title": "Video Test"}'
+  -d '{"video_url": "https://example.com/test-video.mp4"}'
 ```
 
 #### 2. Mendapatkan semua video:
@@ -308,11 +309,11 @@ curl http://localhost:3000/api/videos
 curl http://localhost:3000/api/videos/1
 ```
 
-#### 4. Mengupdate video:
+#### 4. Mengupdate video (menambahkan/mengubah title):
 ```bash
 curl -X PUT http://localhost:3000/api/videos/1 \
   -H "Content-Type: application/json" \
-  -d '{"video_url": "https://example.com/updated-video.mp4", "title": "Judul Baru"}'
+  -d '{"video_url": "https://example.com/updated-video.mp4", "title": "Judul Video"}'
 ```
 
 #### 5. Menghapus video:
@@ -333,15 +334,14 @@ curl "http://localhost:3000/api/videos/search?query=tutorial"
 
 #### Contoh Request di Postman:
 
-**POST** `/api/videos`
+**POST** `/api/videos` (Membuat video baru)
 ```json
 {
-  "video_url": "https://youtube.com/watch?v=example",
-  "title": "Tutorial JavaScript"
+  "video_url": "https://youtube.com/watch?v=example"
 }
 ```
 
-**PUT** `/api/videos/1`
+**PUT** `/api/videos/1` (Update video + menambahkan title)
 ```json
 {
   "video_url": "https://youtube.com/watch?v=updated",
